@@ -4,12 +4,12 @@ function convertTo(req, res, next) {
     
     if (celsius) {
         if (isNaN(parseFloat(celsius))) res.status(400).json({ error: 'Celsius must be a number' })
-        req.result = { 'kelvin': parseFloat(celsius) + 273.15, celsius }
+        req.result = { 'kelvin': parseFloat(celsius) + 273.15, 'celsius': parseFloat(celsius) }
     }
 
     if (kelvin) {
         if (isNaN(parseFloat(kelvin))) res.status(400).json({ error: 'Kelvin must be a number' })
-        req.result = { kelvin, 'celsius': parseFloat(kelvin) - 273.15 }
+        req.result = { 'kelvin': parseFloat(kelvin), 'celsius': parseFloat(kelvin) - 273.15 }
     }
 
     next()

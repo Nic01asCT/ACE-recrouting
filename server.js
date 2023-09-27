@@ -10,6 +10,21 @@ const app = express()
 
 app.use(express.json())
 
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            title: 'ACE recruting API',
+            version: '1.0.0',
+            description: 'Documentation for the ACE recrouting API and all endpoints of it'
+        }
+    },
+    basePath: '/api',
+    apis: ['./routes/*.js'],
+}
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions)
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
+
 const tempRouter = require('./routes/temp')
 const primeRouter = require('./routes/prime')
 const numberRouter = require('./routes/number')
