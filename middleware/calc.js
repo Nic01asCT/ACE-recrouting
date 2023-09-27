@@ -17,8 +17,8 @@ function convertTo(req, res, next) {
 
 function getPrimes(req, res, next) {
     const { limit } = req.query
-    if (!limit) res.status(400).json({ error: 'No temperature value provided' })
-    if (isNaN(parseInt(limit))) res.status(400).json({ error: 'Limit must be a number' })
+    if (!limit) res.status(400).json({ error: 'No value provided' })
+    if (isNaN(parseInt(limit))) res.status(400).json({ error: 'Limit must be a integer' })
 
     let isPrime = new Array(parseInt(limit) + 1).fill(true)
     isPrime[0] = isPrime[1] = false
@@ -35,7 +35,27 @@ function getPrimes(req, res, next) {
     req.primes = { primes }
     next() 
 }
+
+function getFibonacci(req, res, next) {
+    const { n } = req.query
+    if (!n) res.status(400).json({ error: 'No value provided' })
+    if (isNaN(parseInt(n))) res.status(400).json({ error: 'Number must be a integer' })
+
+    let a = 0
+    let b = 1
+
+    for (let i = 0; i < parseInt(n); i++) {
+        const temp = a
+        a = b
+        b = temp + b
+    }
+
+    req.number = { 'number': a }
+    next()
+}
+
 module.exports = {
     convertTo,
-    getPrimes
+    getPrimes,
+    getFibonacci
 }
