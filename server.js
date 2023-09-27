@@ -14,9 +14,9 @@ const tempRouter = require('./routes/temp')
 const primeRouter = require('./routes/prime')
 const numberRouter = require('./routes/number')
 
-app.use('/temp', tempRouter)
-app.use('/prime', primeRouter)
-app.use('/number', numberRouter)
+app.use('/api/temp', tempRouter)
+app.use('/api/prime', primeRouter)
+app.use('/api/number', numberRouter)
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`)
