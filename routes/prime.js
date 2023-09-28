@@ -12,7 +12,7 @@ const { getPrimes } = require('../middleware/calc')
 
 /**
  * @swagger
- * /api/primes:
+ * /api/prime:
  *   get:
  *     summary: Get prime numbers up to a specified limit
  *     tags: [Primes]

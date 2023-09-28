@@ -25,9 +25,19 @@ const { getFibonacci } = require('../middleware/calc')
  *     responses:
  *       200:
  *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               Num:
+ *                 type: object
+ *                 properties:
+ *                   number:
+ *                     type: integer
+ *                     example: 5
  *       400:
  *         description: Invalid request or missing parameters
  */
+
 router.get('/', getFibonacci, (req, res) => {
     res.status(200).send(req.number)
 })
